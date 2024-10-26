@@ -1,0 +1,13 @@
+
+// migration commands
+DATABASE_URL=postgres://postgres@localhost:5432/socialnetwork npm run migrate up
+DATABASE_URL=postgres://postgres@localhost:5432/socialnetwork npm run migrate down
+
+// create table
+npm run migrate create add posts table
+
+// remove table
+npm run migrate down 1729460558544_add-posts-table
+
+// remove columns
+npm run migrate create drop lng and lat from posts    
