@@ -6,7 +6,7 @@ class Pool {
 
   connect(options) {
     this._pool = new pg.Pool(options);
-    // activate connection pool with some test query
+    // activate connection pool with some test query using one of the pool client
     return this._pool.query('SELECT 1+1');
   }
 
@@ -16,8 +16,8 @@ class Pool {
   }
 
   // to make query to database
-  query(sql) {
-    return this._pool.query(sql);
+  query(sql, params) {
+    return this._pool.query(sql, params);
   }
 }
 

@@ -55,9 +55,9 @@ router.post('/posts', async (req, res) => {
   await pool.query(
     `
     INSERT INTO posts (loc) 
-      VALUES ($1);
+      VALUES (point($1, $2));
   `,
-    [`(${lng}, ${lat})`]
+    [lng, lat]
   );
 
   res.redirect('/posts');
