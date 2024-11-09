@@ -19,7 +19,7 @@ module.exports = class UserRepo {
 
   static async insert(username, bio) {
     const { rows } = await pool.query('INSERT INTO users (username, bio) VALUES ($1, $2) RETURNING *', [username, bio]);
-    return rows[0];
+    return toCamelCase(rows)[0];
   }
 
   static async update(id, username, bio) {
@@ -28,11 +28,11 @@ module.exports = class UserRepo {
       bio,
       id,
     ]);
-    return rows[0];
+    return toCamelCase(rows)[0];
   }
 
   static async delete(id) {
     const { rows } = await pool.query('DELETE FROM users WHERE id=$1 RETURNING *', [id]);
-    return rows[0];
+    return toCamelCase(rows)[0];
   }
 };
